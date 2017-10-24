@@ -7,6 +7,40 @@ def power_on():
     """Turn the tv on."""
     os.system('echo on 0 | cec-client -s -d 1')
 
+def power_off():
+    """Turn the tv off."""
+    #switching to current device as active source so that standby command is read
+    os.system('echo "as" | cec-client -s -d 1')
+    os.system('echo "standby 0" | cec-client -s -d 1')
+
 def hdmi_1():
     """Switch to the HDMI 1 source"""
     os.system('echo "tx 4F:82:10:00" | cec-client -s -d 1')
+
+def hdmi_2():
+    """Switch to the HDMI 2 source"""
+    os.system('echo "tx 4F:82:20:00" | cec-client -s -d 1')
+
+def hdmi_3():
+    """Switch to the HDMI 3 source"""
+    os.system('echo "tx 4F:82:30:00" | cec-client -s -d 1')
+
+def hdmi_4():
+    """Switch to the HDMI 4 source"""
+    os.system('echo "tx 4F:82:40:00" | cec-client -s -d 1')
+
+def hdmi_5():
+    """Switch to the HDMI 4 source"""
+    os.system('echo "tx 4F:82:50:00" | cec-client -s -d 1')
+
+def volume_up():
+    """Turn up the volume"""
+    os.system('echo "volup" | cec-client -s -d 1')
+
+def volume_down():
+    """Turn down the volume"""
+    os.system('echo "voldown" | cec-client -s -d 1')
+
+def mute():
+    """Mute/unmute"""
+    os.system('echo "mute" | cec-client -s -d 1')
