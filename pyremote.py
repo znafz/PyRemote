@@ -1,7 +1,24 @@
 #Copyright 2017 Zachary Nafziger
 #PyRemote - Python library for controlling a tv through HDMI
-#Note that this was only tested on one tv, I am unsure if the commands are universal
+#Note that this was only tested on one Roku-powered tv, I am unsure if the commands are universal
 import os
+import requests
+ipaddr = ""
+
+with open('tvip', 'r') as f:
+    ipaddr=f.read().replace('\n', '')
+
+def send_rest_command(cmd):
+    """Send a rest command to the tv"""
+    url = "http://" + ipaddr + ":8060/" + cmd
+    print url
+    requests.post(url=url)
+
+
+def play_pause():
+    '''Play or pause the tv via REST'''
+    send_rest_command('keypress/play')
+
 
 def power_on():
     """Turn the tv on."""
